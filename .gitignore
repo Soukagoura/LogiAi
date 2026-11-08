@@ -1,7 +1,29 @@
+# Environnements virtuels
 .venv/
+.venv_test/
+venv/
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 .pytest_cache/
+*.egg-info/
+
+# Configuration et secrets
 .env
+
+# Données et modèles générés
 data/*.csv
 models/
+
+# Packaging
+build/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Système
+.DS_Store
+Thumbs.db

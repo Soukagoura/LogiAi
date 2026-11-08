@@ -6,14 +6,14 @@ import joblib
 import pandas as pd
 
 from logiai.config import ALERT_THRESHOLD, FEATURES, INFO_PATH, MODEL_PATH
-
-
 class Predictor:
     def __init__(self, model_path: Path = MODEL_PATH, info_path: Path = INFO_PATH):
         self.model = joblib.load(model_path)
+
         info = {}
         if Path(info_path).exists():
             info = json.loads(Path(info_path).read_text(encoding="utf-8"))
+
         self.version = info.get("version", "inconnue")
         self.threshold = info.get("seuil", ALERT_THRESHOLD)
 

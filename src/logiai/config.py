@@ -2,14 +2,16 @@
 import os
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+# Dossier contenant les ressources de l'application
+DEFAULT_ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(os.getenv("LOGIAI_HOME", str(DEFAULT_ROOT))).resolve()
 
 try:
     from dotenv import load_dotenv
 
-    load_dotenv(ROOT / ".env")  # lit le fichier .env (jamais versionné)
+    load_dotenv(ROOT / ".env")
 except ImportError:
-    pass  # sans python-dotenv, on lit seulement les variables d'environnement
+    pass
 
 DATA_PATH = ROOT / "data" / "livraisons.csv"
 MODEL_PATH = ROOT / "models" / "model.joblib"
